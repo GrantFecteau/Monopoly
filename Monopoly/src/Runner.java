@@ -1,12 +1,36 @@
 import java.util.*;
 public class Runner 
 {
+	public static int positionH;
+	public static boolean stillGoing;
 	public static ArrayList<Tiles> squares = new ArrayList<Tiles>();
+	public static ArrayList<Player> players = new ArrayList<Player>();
 
 	public static void main(String[] args) 
 	{
+		
 		addSquares();
-		test();
+		addPlayers();
+		Scanner userInput = new Scanner(System.in);
+		System.out.println("Press Enter to roll the dice! To stop testing, enter n.");
+		while (stillGoing = true)
+		{
+		String blank = userInput.nextLine();
+		int playerPos = players.get(0).getPosition();
+		int dieRoll = Player.rollDice();
+		players.get(0).setPosition(Player.doTurn(dieRoll, playerPos));
+		System.out.println("You rolled a "+ dieRoll + ".");
+		for (int i = 0; i < squares.size(); i ++)
+		{
+			if (players.get(0).getPosition() == squares.get(i).getPosition())
+			{
+				System.out.println("You landed on " + squares.get(i).getName()+".");
+			}
+		}
+		
+		
+		
+		}
 	}
 	
 	public static void addSquares()
@@ -57,8 +81,13 @@ public class Runner
 	{
 		for (int i = 0; i < squares.size(); i++)
 		{
-			System.out.println(squares.get(i).getPosition());
+			System.out.println(squares.get(i).getName());
 		}
+	}
+	
+	public static void addPlayers()
+	{
+		players.add(new Player(0,0,0,false,0,0));
 	}
 
 }
