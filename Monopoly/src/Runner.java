@@ -16,6 +16,12 @@ public class Runner
 		while (stillGoing = true)
 		{
 		String blank = userInput.nextLine();
+		if (blank.equals("n"))
+		{
+			System.exit(0);
+		}
+		else
+		{
 		int playerPos = players.get(0).getPosition();
 		int dieRoll = Player.rollDice();
 		players.get(0).setPosition(Player.doTurn(dieRoll, playerPos));
@@ -27,7 +33,7 @@ public class Runner
 				System.out.println("You landed on " + squares.get(i).getName()+".");
 			}
 		}
-		
+		}
 		
 		
 		}
