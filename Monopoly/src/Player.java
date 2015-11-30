@@ -1,22 +1,22 @@
-
+import java.util.*;
 public class Player 
 {
 	
-	protected int properties;
-	protected int cash;
-	protected int monopolies;
-	protected boolean isInJail;
+	private ArrayList<Purchasable> properties;
+	private int cash;
+	private int monopolies;
+	private boolean isInJail;
 	protected int cardsOwned;
 	protected int position;
 	
-	public Player(int p, int c, int m, boolean iIJ, int cO, int pS)
+	public Player(int c, int m, boolean iIJ, int cO, int pS)
 	{
-		properties = p;
+		properties = new ArrayList<Purchasable>();
 		cash = c;
 		monopolies = m;
 		isInJail= iIJ;
 		cardsOwned= cO;
-		position = p;
+		position = pS;
 		
 	}
 	
@@ -39,18 +39,18 @@ public class Player
 	}
 
 
+	public ArrayList<Purchasable> getProperties()
+		{
+			return properties;
+		}
 
 
-	public int getProperties() {
-		return properties;
-	}
 
 
-
-
-	public void setProperties(int properties) {
-		this.properties = properties;
-	}
+	public void setProperties(ArrayList<Purchasable> properties)
+		{
+			this.properties = properties;
+		}
 
 
 

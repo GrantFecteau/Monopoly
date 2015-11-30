@@ -5,6 +5,8 @@ public class Runner
 	public static boolean stillGoing;
 	public static ArrayList<Tiles> squares = new ArrayList<Tiles>();
 	public static ArrayList<Player> players = new ArrayList<Player>();
+	
+
 
 	public static void main(String[] args) 
 	{
@@ -25,14 +27,8 @@ public class Runner
 		int playerPos = players.get(0).getPosition();
 		int dieRoll = Player.rollDice();
 		players.get(0).setPosition(Player.doTurn(dieRoll, playerPos));
-		System.out.println("You rolled a "+ dieRoll + ".");
-		for (int i = 0; i < squares.size(); i ++)
-		{
-			if (players.get(0).getPosition() == squares.get(i).getPosition())
-			{
-				System.out.println("You landed on " + squares.get(i).getName()+".");
-			}
-		}
+		System.out.println("You rolled a(n) "+ dieRoll + ".");
+		System.out.println("You landed on " + squares.get(players.get(0).getPosition()).getName()+".");
 		}
 		
 		
@@ -93,7 +89,7 @@ public class Runner
 	
 	public static void addPlayers()
 	{
-		players.add(new Player(0,0,0,false,0,0));
+		players.add(new Player(0,0,false,0,0));
 	}
 
 }
