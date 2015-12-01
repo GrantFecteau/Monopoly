@@ -33,7 +33,15 @@ public class Player
 	
 	public static int doTurn(int d, int p)
 	{
+		if (d+p>40)
+			{
+				Runner.players.get(0).setCash(Runner.players.get(0).getCash()+200);
+				System.out.println("You passed 'Go' and collected 200 credits!");
+			}
+		
 		int newPos = (d + p) % 40;
+		
+		
 		
 		return newPos;
 	}
