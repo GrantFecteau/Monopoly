@@ -33,9 +33,8 @@ public class Runner
 		printInventory(players.get(0).getCash(), properties);
 		if (squares.get(players.get(0).getPosition()).getIsBought()== false && squares.get(players.get(0).getPosition()).isBuyable()== true )
 		{
-			Scanner userInput2 = new Scanner(System.in);
 			System.out.println("Would you like to purchase " + squares.get(players.get(0).getPosition()).getName() +" for " + ((Purchasable) squares.get(players.get(0).getPosition())).getBuyPrice() +" dollars? (Y)/(N)");
-			String buyAnswer = userInput2.nextLine();
+			String buyAnswer = userInput.nextLine();
 			if(buyAnswer.equals("Y")||buyAnswer.equals("y"))
 			{
 				properties.add(new String(squares.get(players.get(0).getPosition()).getName()));
@@ -112,11 +111,17 @@ public class Runner
 	public static void printInventory(int c, ArrayList<String> p)
 	{
 		System.out.println("You have " + c + " dollar(s) left.");
-		
+		if(p.size()<1)
+		{
+			System.out.println("You currently have no properties.");
+		}
+		else
+		{
 		System.out.println("Here are your current properties.");
 		for(int i = 0; i < p.size(); i++)
 		{
 			System.out.print("||" + p.get(i) + "||");
+		}
 		}
 		
 		System.out.println();
