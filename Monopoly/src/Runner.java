@@ -31,9 +31,9 @@ public class Runner
 		System.out.println("You rolled a(n) "+ dieRoll + ".");
 		System.out.println("You landed on " + squares.get(players.get(0).getPosition()).getName()+".");
 		printInventory(players.get(0).getCash(), properties);
-		if (squares.get(players.get(0).getPosition()).getIsBought()== false && squares.get(players.get(0).getPosition()).isBuyable()== true )
+		if (squares.get(players.get(0).getPosition()).getIsBought()== false && squares.get(players.get(0).getPosition()) instanceof Purchasable &&players.get(0).getCash()>=((Purchasable) squares.get(players.get(0).getPosition())).getBuyPrice())
 		{
-			System.out.println("Would you like to purchase " + squares.get(players.get(0).getPosition()).getName() +" for " + ((Purchasable) squares.get(players.get(0).getPosition())).getBuyPrice() +" dollars? (Y)/(N)");
+			System.out.println("Would you like to purchase " + squares.get(players.get(0).getPosition()).getName() +" for " + ((Purchasable) squares.get(players.get(0).getPosition())).getBuyPrice() +" credits? (Y)/(N)");
 			String buyAnswer = userInput.nextLine();
 			if(buyAnswer.equals("Y")||buyAnswer.equals("y"))
 			{
@@ -55,6 +55,14 @@ public class Runner
 	
 	public static void addSquares()
 	{
+		System.out.println("Please select a board. Type 'Star Wars' for Star Wars and 'Vanillia' for original.");
+		
+		Scanner starA = new Scanner (System.in);
+		
+		String ban = starA.nextLine();
+		
+		if (ban.equals("Star Wars"))
+			{
 		squares.add(new NoPurchase("Go","go",0));
 		squares.add(new Colored(false,false,"",60,0,0,"Purple",0,0,"Swamp - Dagobah",1));
 		squares.add(new NoPurchase("Rebel Scum", "drawCom",2));
@@ -68,7 +76,7 @@ public class Runner
 		squares.add(new NoPurchase("CARBONATION ", "visit", 10));
 		squares.add(new Colored(false,false,"",140,0,0,"Light Pink",0,0,"Lars Homestead - Tatooine",11));
 		squares.add(new NoColor(false, false,"",150,0,0,"Reactor Core",12));
-		squares.add(new Colored(false,false,"",140,0,0,"Light Pink",0,0,"Mos Eisley",13));
+		squares.add(new Colored(false,false,"",140,0,0,"Light Pink",0,0,"Mos Eisley - Tatooine",13));
 		squares.add(new Colored(false,false,"",160,0,0,"Light Pink",0,0,"Yoda's Other Swamp - Tatooine",14));
 		squares.add(new NoColor(false, false,"",200,0,0,"Millennium Falcon",15));
 		squares.add(new Colored(false,false,"",180,0,0,"Orange",0,0,"War Room - Yavin Four",16));
@@ -95,6 +103,12 @@ public class Runner
 		squares.add(new Colored(false,false,"",350,0,0,"Purple",0,0,"Monument Square - Coruscant" ,37));
 		squares.add(new NoPurchase("Bounty", "taxL", 38));
 		squares.add(new Colored(false,false,"",400,0,0,"Purple",0,0,"Imperial Palace - Coruscant",39));
+			}
+		
+		if (ban.equals("Vanilla"))
+			{
+				
+			}
 	}
 	
 	public static void test()
@@ -112,7 +126,7 @@ public class Runner
 	
 	public static void printInventory(int c, ArrayList<String> p)
 	{
-		System.out.println("You have " + c + " dollar(s) left.");
+		System.out.println("You have " + c + " credit(s) left.");
 		if(p.size()<1)
 		{
 			System.out.println("You currently have no properties.");
@@ -122,7 +136,7 @@ public class Runner
 		System.out.println("Here are your current properties.");
 		for(int i = 0; i < p.size(); i++)
 		{
-			System.out.print("||" + p.get(i) + "||");
+			System.out.print("|" + p.get(i) + "|");
 		}
 		}
 		

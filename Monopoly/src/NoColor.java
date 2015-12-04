@@ -12,7 +12,6 @@ public class NoColor extends Purchasable
 			rent = r;
 			name = n;
 			position = pS;
-			buyable = true;
 			isBought = false;
 		}
 

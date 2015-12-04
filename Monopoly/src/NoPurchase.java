@@ -7,7 +7,6 @@ public class NoPurchase extends Tiles
 		name = n;
 		action = a;
 		position = p;
-		buyable = false;
 		isBought = false;
 	}
 	

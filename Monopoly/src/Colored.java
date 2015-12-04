@@ -19,9 +19,7 @@ public class Colored extends Purchasable
 			houses = h; 
 			numOfSameColor = nSC;
 			position = pS;
-			buyable = true;
-			isBought = false;
-			
+			isBought = false;	
 		}
 
 		public String getColor() 

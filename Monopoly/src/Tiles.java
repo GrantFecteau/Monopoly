@@ -5,16 +5,10 @@ public abstract class Tiles
 		protected String action;
 		protected int position;
 		protected String name;
-		protected boolean buyable;
 		protected boolean isBought = false;
 		
 		
-		public boolean isBuyable() {
-			return buyable;
-		}
-		public void setBuyable(boolean buyable) {
-			this.buyable = buyable;
-		}
+		
 		public void setBought(boolean isBought) {
 			this.isBought = isBought;
 		}
