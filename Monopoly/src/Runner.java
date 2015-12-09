@@ -6,6 +6,7 @@ public class Runner
 	public static ArrayList<Tiles> squares = new ArrayList<Tiles>();
 	public static ArrayList<Player> players = new ArrayList<Player>();
 	public static ArrayList<String> properties = new ArrayList<String>();
+	public static String cash = "";
 	
 
 
@@ -33,7 +34,7 @@ public class Runner
 		printInventory(players.get(0).getCash(), properties);
 		if (squares.get(players.get(0).getPosition()).getIsBought()== false && squares.get(players.get(0).getPosition()) instanceof Purchasable &&players.get(0).getCash()>=((Purchasable) squares.get(players.get(0).getPosition())).getBuyPrice())
 		{
-			System.out.println("Would you like to purchase " + squares.get(players.get(0).getPosition()).getName() +" for " + ((Purchasable) squares.get(players.get(0).getPosition())).getBuyPrice() +" credits? (Y)/(N)");
+			System.out.println("Would you like to purchase " + squares.get(players.get(0).getPosition()).getName() +" for " + ((Purchasable) squares.get(players.get(0).getPosition())).getBuyPrice() +" "+cash+"(s)? (Y)/(N)");
 			String buyAnswer = userInput.nextLine();
 			if(buyAnswer.equals("Y")||buyAnswer.equals("y"))
 			{
@@ -63,6 +64,7 @@ public class Runner
 		
 		if (ban==1)
 			{
+				cash = "credit";
 		squares.add(new NoPurchase("Go","go",0));
 		squares.add(new Colored(false,false,"",60,0,0,"Purple",0,0,"Swamp - Dagobah",1));
 		squares.add(new NoPurchase("Rebel Scum", "drawCom",2));
@@ -107,6 +109,7 @@ public class Runner
 		
 		else if (ban == 2)
 			{
+				cash = "dollar";
 			squares.add(new NoPurchase("Go","go",0));
 			squares.add(new Colored(false,false,"",60,0,0,"Brown",0,0,"Mediteranean Avenue",1));
 			squares.add(new NoPurchase("Community Chest", "drawCom",2));
@@ -171,7 +174,7 @@ public class Runner
 	
 	public static void printInventory(int c, ArrayList<String> p)
 	{
-		System.out.println("You have " + c + " credit(s) left.");
+		System.out.println("You have " + c + " "+cash+"(s) left.");
 		if(p.size()<1)
 		{
 			System.out.println("You currently have no properties.");
