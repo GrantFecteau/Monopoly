@@ -28,7 +28,23 @@ public class Runner
 		{
 		int playerPos = players.get(0).getPosition();
 		int dieRoll = Player.rollDice();
+		if (players.get(0).isBack()==false)
+		{
 		players.get(0).setPosition(Player.doTurn(dieRoll, playerPos));
+		}
+		else if (players.get(0).isBack()==true)
+		{
+		players.get(0).setPosition(Player.doBackTurn(dieRoll, playerPos));
+		}
+		
+		if (players.get(0).getPosition() == 10 && players.get(0).isBack()==false)
+		{
+			players.get(0).setBack(true);
+		}
+		else if (players.get(0).getPosition() == 10 && players.get(0).isBack()==true)
+		{
+			players.get(0).setBack(false);
+		}
 		System.out.println("You rolled a(n) "+ dieRoll + ".");
 		System.out.println("You landed on " + squares.get(players.get(0).getPosition()).getName()+".");
 		printInventory(players.get(0).getCash(), properties);
@@ -169,7 +185,7 @@ public class Runner
 	
 	public static void addPlayers()
 	{
-		players.add(new Player(1500,0,false,0,0));
+		players.add(new Player(1500,0,false,0,0,false));
 	}
 	
 	public static void printInventory(int c, ArrayList<String> p)
